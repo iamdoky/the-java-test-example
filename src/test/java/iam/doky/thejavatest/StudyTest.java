@@ -16,7 +16,7 @@ class StudyTest {
         assertTimeoutPreemptively(Duration.ofMillis(100), () -> {
             new Study(10);
             Thread.sleep(300);
-            //TODO -> ThreadLocal
+            //TODO -> ThreadLocal aaa
         /*assertTimeout(Duration.ofMillis(100), () -> {
             new Study(10);
             Thread.sleep(300);*/
