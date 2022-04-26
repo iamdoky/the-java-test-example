@@ -3,7 +3,9 @@ package iam.doky.thejavatest;
 import org.junit.jupiter.api.*;
 import static org.junit.Assert.*;
 
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ParameterContext;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -18,7 +20,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 // @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+// @ExtendWith(FindSlowTestExtension.class)        // 선언적으로 사용
 class StudyTest {
+
+    @RegisterExtension
+    static FindSlowTestExtension findSlowTestExtension = new FindSlowTestExtension(1000L);
 
     @FastTest
     void create_new_study() {
@@ -28,8 +34,10 @@ class StudyTest {
 
     @SlowTest
     @DisplayName("두번쨰 테스트 slow ")
-    @Tag("slow")
-    void create_new_study_01() {
+    //@Tag("slow")
+    //@Disabled
+    void create_new_study_01() throws InterruptedException {
+        Thread.sleep(1005L);
         System.out.println("Create1");
     }
 
