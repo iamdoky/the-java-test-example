@@ -1,4 +1,4 @@
-package doitDataStructureAlgorithm;
+package doitDataStructureAlgorithm.doit01;
 
 import java.util.Scanner;
 
